@@ -1,0 +1,18 @@
+import React from 'react'
+
+const Dropdown = ({title,options,func}) => {
+    return (
+        <div className="select">
+      <select name="format" id="format" defaultValue="0" onChange={func}>
+        <option value="0" disable="true">{title}</option>
+        {options.map((o,i)=>(
+            <option  key={i} value={o}>
+                {o.toUpperCase()}
+            </option>
+        ))}
+      </select>
+        </div>
+    )
+}
+
+export default Dropdown
