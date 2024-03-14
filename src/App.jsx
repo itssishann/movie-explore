@@ -10,7 +10,6 @@ import Actors from './components/Actors';
 import Moviedetails from './components/templates/movieDetails';
 import Tvdetails from './components/templates/Tvdetails';
 import Persondetails from './components/templates/Persondetails';
-import FormReg from "./components/FormReg";
 import MobileAlert from './components/templates/MobileAlert';
 import NotFound404 from './components/NotFound404';
 
@@ -45,7 +44,6 @@ function App() {
         <Route path="/tv/details/:id" element={<Tvdetails />} />
         <Route path="/actors" element={<Actors />} />
         <Route path="/person/details/:id" element={<Persondetails />} />
-        <Route path="/form" element={<FormReg />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <MobileAlert />
