@@ -9,7 +9,7 @@ const TrendCards = ({data}) => {
    
        </div>
         <div className='w-full flex  overflow-x-visible mb-4 '>
-            {data.map((data,i)=> <div key={i} className=' border-2 rounded-md min-w-[15%]  mr-5 '>
+            {data.map((data,i)=> <div key={i} className=' border-2 rounded-md border-zinc-600 cursor-pointer hover:border-zinc-200 duration-200 min-w-[15%]  mr-5 '>
               <Link key={i} to={`/${data.media_type}/details/${data.id}`}>
                 <img className='w-full rounded-md  object-cover' loading='lazy' src={`https://image.tmdb.org/t/p/original/${data.backdrop_path || data.poster_path}`} alt={`Image-${i+1}`} />
                 </Link>
