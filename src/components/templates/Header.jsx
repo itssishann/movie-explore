@@ -1,15 +1,27 @@
-import React from 'react';
+import { Axios } from 'axios';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
-function maintainHandler(){
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: "Working on this feature!"
-  });
-  
+import axios from '../../utils/axios'
+let videoTrailer = undefined 
+function maintainHandler() {
+{
+      Swal.fire({
+          title: "Trailer!",
+          html: `<iframe class="rounded-lg" width="450" height="320" src="https://www.youtube.com/embed/${videoTrailer.key}?autoplay=1;" frameborder="0" allow="autoplay" allowfullscreen></iframe>`,
+          showConfirmButton: true
+      });
+  }
 }
+
 const Header = ({ data }) => {
+const id = (data.id)
+  async function getTrailer(){
+    const videos = await axios.get(`/${data.media_type}/${id}/videos`)
+     const res = (videos.data.results.find((m)=> m.type === "Trailer"));
+     videoTrailer = res
+  }
+  useEffect(()=>{getTrailer()},[])
   return (
     <div className='w-full h-[50vh] flex flex-col items-start justify-end p-16' style={{
       background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(https://image.tmdb.org/t/p/original/${data.backdrop_path || data.profile_path})`,
